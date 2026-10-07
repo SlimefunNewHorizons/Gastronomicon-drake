@@ -3,7 +3,7 @@ package io.github.schntgaispock.gastronomicon.core.slimefun.recipes;
 import io.github.schntgaispock.gastronomicon.Gastronomicon;
 import io.github.schntgaispock.gastronomicon.api.recipes.components.GroupRecipeComponent;
 import io.github.schntgaispock.gastronomicon.core.slimefun.GastroStacks;
-import com.github.drakescraft_labs.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
