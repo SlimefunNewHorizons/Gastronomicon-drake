@@ -44,9 +44,22 @@ public class DynaTechSetup {
         return register(gc2, seconds, inputs, mk2Outputs) || registered;
     }
 
+    /** Returns the first registered item among the given IDs (current DynaTech IDs first, legacy IDs after). */
+    private static SlimefunItem firstRegistered(String... ids) {
+        for (String id : ids) {
+            SlimefunItem item = SlimefunItem.getById(id);
+            if (item != null) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public static boolean setup() {
-        gc = SlimefunItem.getById("GROWTH_CHAMBER");
-        gc2 = SlimefunItem.getById("GROWTH_CHAMBER_MK2");
+        // DynaTech builds IDs from namespaced keys (dynatech:growth_chamber -> DYNATECH_GROWTH_CHAMBER);
+        // older builds used the bare GROWTH_CHAMBER / GROWTH_CHAMBER_MK2 IDs.
+        gc = firstRegistered("DYNATECH_GROWTH_CHAMBER", "GROWTH_CHAMBER");
+        gc2 = firstRegistered("DYNATECH_GROWTH_CHAMBER_MARK_2", "GROWTH_CHAMBER_MK2");
 
         if (gc == null && gc2 == null) {
             return false;
